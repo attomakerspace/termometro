@@ -15,19 +15,17 @@ i2c = SoftI2C(sda=Pin(21), scl=Pin(22), freq=400000)
 
 devices = i2c.scan()
 if len(devices) == 0:
- print("No i2c device !")
+    print("No i2c device !")
 else:
- print('i2c devices found:',len(devices))
+    print('i2c devices found:',len(devices))
 for device in devices:
- print("Hexa address: ",hex(device))
+    print("Hexa address: ",hex(device))
 
 
 lcd = I2cLcd(i2c, I2C_ADDR, I2C_NUM_ROWS, I2C_NUM_COLS)
 
-lcd.putstr("It's working :)")
+lcd.putstr("Teplomer pracuje:)")
 time.sleep(4)
-
-
 
 # Initialize DS18x20 devices
 
@@ -38,19 +36,19 @@ roms = ds_sensor.scan()
 print('Found DS devices: ', roms)
 
 while True:
-  lcd.clear()
-  ds_sensor.convert_temp()
-  time.sleep_ms(1500)
-  i = 0
-  for rom in roms:
-    i = i + 1
-    print(rom)
-    print("Poradie senzora:", i)
-    temperature = ds_sensor.read_temp(rom)
-    print(temperature)
-    lcd.move_to(0, i-1)
-    lcd.putstr("Teplota " + str(i) + ": " + str(temperature) )
-    # Display two different messages on different lines
-    # By default, it will start at (0,0) if the display is empty
-    time.sleep(2)
+    lcd.clear()
+    ds_sensor.convert_temp()
+    time.sleep_ms(1500)
+    i = 0
+    for rom in roms:
+       i = i + 1
+       print(rom)
+       print("Poradie senzora:", i)
+       temperature = ds_sensor.read_temp(rom)
+       print(temperature)
+       lcd.move_to(0, i-1)
+       lcd.putstr("Teplota " + str(i) + ": " + str(temperature) )
+       # Display two different messages on different lines
+       # By default, it will start at (0,0) if the display is empty
+       time.sleep(2)
    
