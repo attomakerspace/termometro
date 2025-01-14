@@ -1,4 +1,4 @@
-# Complete project details at https://RandomNerdTutorials.com
+# Teplomer s DS18B20
 
 import machine, onewire, ds18x20, time
 from machine import Pin, SoftI2C
@@ -15,12 +15,11 @@ i2c = SoftI2C(sda=Pin(21), scl=Pin(22), freq=400000)
 
 devices = i2c.scan()
 if len(devices) == 0:
-    print("No i2c device !")
+    print("Ziadne i2c zariadenie!")
 else:
-    print('i2c devices found:',len(devices))
+    print('i2c zariadenia nájdené:',len(devices))
 for device in devices:
-    print("Hexa address: ",hex(device))
-
+    print("Hexa adresa: ",hex(device))
 
 lcd = I2cLcd(i2c, I2C_ADDR, I2C_NUM_ROWS, I2C_NUM_COLS)
 
