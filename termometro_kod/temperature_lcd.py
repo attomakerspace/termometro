@@ -23,7 +23,7 @@ for device in devices:
 
 lcd = I2cLcd(i2c, I2C_ADDR, I2C_NUM_ROWS, I2C_NUM_COLS)
 
-lcd.putstr("Teplomer pracuje:)")
+lcd.putstr("Teplomer pracuje. :)")
 time.sleep(4)
 
 # Initialize DS18x20 devices
