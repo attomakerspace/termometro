@@ -32,7 +32,7 @@ ds_pin = machine.Pin(2)
 ds_sensor = ds18x20.DS18X20(onewire.OneWire(ds_pin))
 
 roms = ds_sensor.scan()
-print('Found DS devices: ', roms)
+print('Nájdené DS zariadenia: ', roms)
 
 while True:
     lcd.clear()
@@ -41,8 +41,9 @@ while True:
     i = 0
     for rom in roms:
        i = i + 1
-       print(rom)
+       print("")
        print("Poradie senzora:", i)
+       print(rom)
        temperature = ds_sensor.read_temp(rom)
        print(temperature)
        lcd.move_to(0, i-1)
